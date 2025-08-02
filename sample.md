@@ -1,20 +1,50 @@
-# Project Title: Terminal Markdown Renderer
+### 🔹 1.10 Supervised and Unsupervised Algorithms
 
-Welcome to the **Terminal Markdown Renderer**! This project renders markdown directly in your terminal.
+#### 🎯 **Supervised Learning**:
 
-## Features
+- Requires labeled data (input-output pairs).
+- Examples:
+  - Linear Regression
+  - Logistic Regression
+  - Support Vector Machines (SVMs)
+  - Neural Networks
+  - Decision Trees
+  - Random Forests
 
-- ✅ Fast and lightweight
-- 🧩 Modular design
-- 🎨 Supports **bold**, **italic**, `inline code`, and headings
-- 🧪 Easy to test and extend
+> Used for tasks like classification and regression.
 
-## Installation
+#### 🧠 **Unsupervised Learning**:
 
-Clone the repository:
+- No labeled data; the model discovers hidden patterns or groupings in the input.
+- Examples:
+  - K-Means Clustering
+  - Principal Component Analysis (PCA)
+  - Autoencoders
+  - Self-Organizing Maps
 
-```bash
-git clone https://github.com/username/terminal-md-renderer.git
-cd terminal-md-renderer
-make
+> Used for tasks like dimensionality reduction, clustering, and anomaly detection.
+
+```cpp
+int add(int a, int b) {
+    return a + b;
+}
+```
+
+```cpp
+#include <iostream>
+#include <vector>
+
+int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    std::vector<int> nums = {1, 2, 3, 4, 5};
+    for (int num : nums) {
+        std::cout << "Factorial of " << num << " is ";
+        std::cout << factorial(num) << std::endl;
+    }
+    return 0;
+}
 ```

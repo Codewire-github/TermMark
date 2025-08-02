@@ -17,6 +17,12 @@
     "string": "cpp",
     "string_view": "cpp",
     "typeinfo": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "regex": "cpp",
+    "iostream": "cpp",
+    "__split_buffer": "cpp",
+    "deque": "cpp",
+    "vector": "cpp",
+    "istream": "cpp"
   }
 }

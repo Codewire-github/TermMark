@@ -17,7 +17,9 @@ namespace termstyle {
     constexpr const char* STRIKE      = "\033[9m";
 
     // Foreground colors
-    constexpr const char* BLACK       = "\033[30m";
+    constexpr const char* DARK_GRAY   = "\033[90m";
+    constexpr const char* LIGHT_GRAY  = "\033[37m";
+    constexpr const char* BLACK = "\033[30m";
     constexpr const char* RED         = "\033[31m";
     constexpr const char* GREEN       = "\033[32m";
     constexpr const char* YELLOW      = "\033[33m";
@@ -27,8 +29,10 @@ namespace termstyle {
     constexpr const char* WHITE       = "\033[37m";
 
     // Bright foreground colors
-    constexpr const char* BRIGHT_BLACK   = "\033[90m";
-    constexpr const char* BRIGHT_RED     = "\033[91m";
+    constexpr const char* BRIGHT_BLACK = "\033[90m";
+    constexpr const char* BG_DARK_GRAY   = "\033[100m";
+    constexpr const char* BG_LIGHT_GRAY  = "\033[47m";
+    constexpr const char* BRIGHT_RED = "\033[91m";
     constexpr const char* BRIGHT_GREEN   = "\033[92m";
     constexpr const char* BRIGHT_YELLOW  = "\033[93m";
     constexpr const char* BRIGHT_BLUE    = "\033[94m";

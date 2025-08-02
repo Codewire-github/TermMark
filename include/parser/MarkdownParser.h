@@ -5,12 +5,18 @@
 enum class TokenType {
     Heading,
     Paragraph,
+    Quote,
+    List,
+    CodeBlock,
+
 };
 
 enum class InlineType {
     Plain,
     Bold,
-    Italic
+    Italic,
+    BoldItalic,
+    Code
 };
 
 struct InlineToken {
@@ -18,9 +24,16 @@ struct InlineToken {
     std::string text;
 };
 
+struct CodeBlockToken {
+    std::string lang;
+    std::string code;
+};
+
 struct Token {
     TokenType type;
     std::vector<InlineToken> content;
+    CodeBlockToken codeContent;
+    std::vector<std::vector<InlineToken>> listItems = {};
     int headingLevel = 0; // For headings only
 };
 

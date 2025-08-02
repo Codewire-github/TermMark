@@ -1,7 +1,9 @@
 #include "parser/MarkdownParser.h"
 #include "renderer/Renderer.h"
+#include "utils/FileIO.h"
 #include <fstream>
 #include <iostream>
+
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -9,14 +11,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::ifstream file(argv[1]);
-    if (!file) {
-        std::cerr << "Failed to open file: " << argv[1] << "\n";
+    try {
+        std::string content = utils::readFile(argv[1]);
+        auto tokens = parseMarkdown(content);
+        renderTokens(tokens);
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << '\n';
         return 1;
     }
 
-    std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-    auto tokens = parseMarkdown(content);
-    renderTokens(tokens);
     return 0;
 }
