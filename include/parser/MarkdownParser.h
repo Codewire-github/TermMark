@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <variant>
 
 enum class TokenType {
     Heading,
@@ -16,12 +17,38 @@ enum class InlineType {
     Bold,
     Italic,
     BoldItalic,
-    Code
+    Code,
+    HyperLink,
+};
+
+enum class ListType {
+    Unordered,
+    Ordered
 };
 
 struct InlineToken {
     InlineType type;
     std::string text;
+    std::string url;
+    std::vector<InlineToken> children;
+};
+
+struct HeadingToken {
+    int level;
+    std::vector<InlineToken> content;
+};
+
+struct ParagraphToken {
+    std::vector<InlineToken> content;
+};
+
+struct QuoteToken {
+    std::vector<InlineToken> content;
+};
+
+struct ListToken {
+    ListType type;
+    std::vector<std::vector<InlineToken>> items;
 };
 
 struct CodeBlockToken {
@@ -29,12 +56,11 @@ struct CodeBlockToken {
     std::string code;
 };
 
+using TokenData = std::variant<HeadingToken, ParagraphToken, QuoteToken, ListToken, CodeBlockToken>;
+
 struct Token {
     TokenType type;
-    std::vector<InlineToken> content;
-    CodeBlockToken codeContent;
-    std::vector<std::vector<InlineToken>> listItems = {};
-    int headingLevel = 0; // For headings only
+    TokenData data;
 };
 
 std::vector<Token> parseMarkdown(const std::string& input);
