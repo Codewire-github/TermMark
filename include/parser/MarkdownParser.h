@@ -9,6 +9,8 @@ enum class TokenType {
     Quote,
     List,
     CodeBlock,
+    HorizontalRule,
+    Table
 
 };
 
@@ -56,7 +58,15 @@ struct CodeBlockToken {
     std::string code;
 };
 
-using TokenData = std::variant<HeadingToken, ParagraphToken, QuoteToken, ListToken, CodeBlockToken>;
+struct HorizontalRuleToken {
+
+};
+struct TableToken {
+    std::vector<std::vector<InlineToken>> headers;
+    std::vector<std::vector<std::vector<InlineToken>>> rows;
+};
+
+using TokenData = std::variant<HeadingToken, ParagraphToken, QuoteToken, ListToken, CodeBlockToken, HorizontalRuleToken, TableToken>;
 
 struct Token {
     TokenType type;

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <unistd.h>
+#include <sys/ioctl.h>
 #include <algorithm>
 
 int getMaxLineWidth(const std::string& code) {
@@ -14,6 +16,16 @@ int getMaxLineWidth(const std::string& code) {
         maxLen = std::max(maxLen, static_cast<int>(line.length()));
     }
     return maxLen;
+}
+
+void printHorizontalRule() {
+    struct winsize w;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    int width = w.ws_col;
+
+    std::cout << termstyle::DARK_GRAY;
+    for (int i = 0; i < width; ++i) std::cout << "_";
+    std::cout << termstyle::RESET << "\n" << std::endl;
 }
 
 void renderInline(const std::vector<InlineToken>& content) {
@@ -70,6 +82,11 @@ void renderTokens(const std::vector<Token>& tokens) {
                 std::cout << termstyle::RESET << "\n\n";
             }
 
+            else if constexpr (std::is_same_v<T, HorizontalRuleToken>) {
+               
+                printHorizontalRule();
+            }
+
             else if constexpr (std::is_same_v<T, ParagraphToken>) {
                 renderInline(content.content);
                 std::cout << "\n\n";
@@ -98,6 +115,70 @@ void renderTokens(const std::vector<Token>& tokens) {
             std::cout << "\n";
             }
 
+           else if constexpr (std::is_same_v<T, TableToken>) {
+                using namespace termstyle;
+
+                std::vector<size_t> colWidths(content.headers.size(), 0);
+
+                for (size_t i = 0; i < content.headers.size(); ++i) {
+                    size_t cellWidth = 0;
+                    for(const auto& token : content.headers[i]) {
+                        cellWidth += token.text.length();
+                    }
+                    colWidths[i] = cellWidth;
+                }
+
+                for (const auto& row : content.rows) {
+                    for (size_t i = 0; i < row.size(); ++i) {
+                        size_t cellWidth = 0;
+                        for(const auto& token : row[i]) {
+                            cellWidth += token.text.length();
+                        }
+                        colWidths[i] = std::max(colWidths[i], cellWidth);
+                    }
+                }
+
+                auto printRow = [&](const std::vector<std::vector<InlineToken>>& row, bool isHeader = false) {
+                    std::cout << BRIGHT_BLACK << "│" << RESET;
+                    for (size_t i = 0; i < row.size(); ++i) {
+                        std::cout << " ";
+                        if (isHeader) {
+                            std::cout << BRIGHT_BLUE;
+                        }
+                        size_t currentWidth = 0;
+                        for(const auto& token : row[i]) {
+                            currentWidth += token.text.length();
+                        }
+                        renderInline(row[i]);
+                        for (size_t j = 0; j < colWidths[i] - currentWidth; ++j) {
+                            std::cout << " ";
+                        }
+                        std::cout << RESET << " ";
+                        std::cout << BRIGHT_BLACK << "│" << RESET;
+                    }
+                    std::cout << "\n";
+                };
+
+                auto printDivider = [&](const std::string& start, const std::string& mid, const std::string& end) {
+                    std::cout << BRIGHT_BLACK << start;
+                    for (size_t i = 0; i < colWidths.size(); ++i) {
+                        std::cout << std::string(colWidths[i] + 2, '-');
+                        std::cout << (i == colWidths.size() - 1 ? end : mid);
+                    }
+                    std::cout << RESET << "\n";
+                };
+
+                printDivider("┌", "┬", "┐");
+                printRow(content.headers, true);
+                printDivider("├", "┼", "┤");
+
+                for (const auto& row : content.rows) {
+                    printRow(row);
+                }
+
+                printDivider("└", "┴", "┘");
+            }
+
 
             else if constexpr (std::is_same_v<T, CodeBlockToken>) {
                 using namespace termstyle;
@@ -120,6 +201,7 @@ void renderTokens(const std::vector<Token>& tokens) {
 
                 std::cout << BRIGHT_YELLOW << bottomBorder << RESET << "\n\n";
             }
+
 
         }, token.data);
     }

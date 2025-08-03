@@ -23,6 +23,7 @@
     "__split_buffer": "cpp",
     "deque": "cpp",
     "vector": "cpp",
-    "istream": "cpp"
+    "istream": "cpp",
+    "variant": "cpp"
   }
 }
