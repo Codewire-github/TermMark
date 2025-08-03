@@ -10,4 +10,4 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
     main.cpp
 )
 
-add_executable(markdown_viewer ${SOURCES})
+add_executable(termmark ${SOURCES})
