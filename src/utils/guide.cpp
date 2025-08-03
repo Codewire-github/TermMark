@@ -1,23 +1,24 @@
 #include "utils/guide.h"
 
 void printMarkdownGuide() {
-    std::string content = R"(
-# 📘 Markdown Syntax Guide
+    std::string content =
+        R"(
+# 📘 TermMark Syntax Demo
 
-Welcome to the **Markdown Syntax Guide**. This guide shows how to format text using *Markdown*, including how to use `inline code`, code blocks, lists, quotes, and more.
+Welcome to the **TermMark Syntax Demo**. This is a live example showing what your terminal Markdown viewer — *TermMark* — can render beautifully in the terminal. Use this as a quick reference and demo of supported features like **bold**, *italic*, `inline code`, code blocks, lists, quotes, tables, and more.
 
 ## 🔠 Headings
 
-Headings are created using `#` symbols at the beginning of a line. The number of `#` symbols determines the heading level (from 1 to 6).
+TermMark supports six levels of headings using `#` symbols:
 
-# Heading 1 – Page Title
-## Heading 2 – Section Title
-### Heading 3 – Subsection
-#### Heading 4 – Sub-subsection
-##### Heading 5 – Minor Heading
+# Heading 1 – Page Title  
+## Heading 2 – Section Title  
+### Heading 3 – Subsection  
+#### Heading 4 – Sub-subsection  
+##### Heading 5 – Minor Heading  
 ###### Heading 6 – Smallest Heading
 
-> Use headings to organize your content clearly.
+> Use headings to organize your Markdown content clearly.
 
 ## ✨ Text Formatting
 
@@ -30,8 +31,8 @@ Inline code looks like this: `printf("Hello, World!");`
 ### Unordered List:
 - Apples
 - Bananas
-  - Yellow
-  - Ripe
+- Yellow
+- Ripe
 - Cherries
 
 ### Ordered List:
@@ -45,28 +46,52 @@ Inline code looks like this: `printf("Hello, World!");`
 ```cpp
 #include <iostream>
 int main() {
-    std::cout << "Hello from C++!" << std::endl;
+    std::cout << "Hello from TermMark!" << std::endl;
     return 0;
 }
-```
+````
+
 ### Python Example:
+
 ```python
 def greet(name):
     print(f"Hello, {name}!")
-greet("Markdown")
+greet("TermMark")
 ```
 
 ## 🔗 Links
 
-Here's a useful resource: [Visit GitHub](https://github.com/Codewire-github/TermMark)
+You can also include links: [Visit GitHub](https://github.com/Codewire-github/TermMark)
 
-If your terminal doesn't support clickable links, it will show as underlined or plain text.
+Note: Terminals may show links as underlined or plain text, not clickable.
+
 ## 📝 Blockquote
 
 > "Markdown is not a replacement for HTML, but it can complement it." — CommonMark Spec
 
-That’s it! Use this guide as a reference when writing notes or documentation in Markdown.
+## 🧱 Horizontal Rule
+
+Use `---`, `***`, or `___` on a line by itself to create a horizontal divider.
+
+---
+
+This section appears after a horizontal rule.
+
+## 📊 Tables
+
+TermMark supports basic tables:
+
+| Feature     | Notes                   |
+| ----------- | ----------------------- |
+| Bold        | Use `**bold**`          |
+| Italic      | Use `*italic*`          |
+| Code Blocks | Triple backticks ``` |
+
+---
+
+That's it! 🎉 This guide shows what TermMark can do. Try opening your own `.md` files and see them rendered right in your terminal.
 )";
+
     auto tokens = parseMarkdown(content);
     renderTokens(tokens);
 };
