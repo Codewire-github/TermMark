@@ -41,6 +41,7 @@ You can render Markdown content in the terminal:
 ```bash
 ./termmark guide      # Renders a built-in markdown guide
 ./termmark README.md  # Renders any local .md file
+./termmark --watch <file.md>
 ```
 
 Use the flags:
@@ -48,6 +49,7 @@ Use the flags:
 ```bash
 ./termmark --help
 ./termmark --version
+./termmark --watch <file.md>
 ```
 
 ---
