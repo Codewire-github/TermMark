@@ -13,7 +13,8 @@
 - **Blockquotes** and horizontal dividers
 - **Simple Markdown table support**
 - **Modular architecture** – easy to extend or integrate
-- **`--help` and `--version` CLI flags**
+- **Live watching of file changes with `--watch`**
+- `--help` and `--version` CLI flags
 
 ---
 
@@ -43,12 +44,16 @@ You can render Markdown content in the terminal:
 ./termmark README.md    # Renders any local .md file
 ```
 
+Watch a file and auto-update on changes:
+```bash
+./termmark --watch path/to/file.md
+```
+
 Use the flags:
 
 ```bash
 ./termmark --help
 ./termmark --version
-./termmark --watch <file.md>
 ```
 
 ---
@@ -60,6 +65,12 @@ Use the flags:
 
 ---
 
+### Watch Mode Demo
+
+![Watch mode Demo](images/watch-demo.gif)
+
+---
+
 ### 📁 Project Structure
 
 ```bash
@@ -68,10 +79,12 @@ TERMMARK/
 │   ├── parser/            # Markdown parser interface
 │   ├── renderer/          # Renderer interface
 │   └── utils/             # CLI info, styles, compatibility
+│   └── watch/
 ├── src/                   # Implementation files
 │   ├── parser/            # Markdown parser implementation
 │   ├── renderer/          # Terminal renderer implementation
 │   └── utils/             # CLI tools and helpers
+│   └── watch/             # Watcher implementation (for --watch)
 ├── sample.md              # Sample markdown input
 ├── main.cpp               # Entry point
 ├── CMakeLists.txt         # Build configuration
@@ -89,9 +102,7 @@ TERMMARK/
 
 ### 📌 Future Plans
 
-- [ ] Support images as alt-text
-- [ ] Terminal link detection
-- [ ] Live preview for `.md` editing
+- [ ] Support Nested List
 - [ ] Color themes or syntax highlighting
 
 ---
