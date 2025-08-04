@@ -1,6 +1,6 @@
 #include "utils/cli_info.h"
 
-constexpr const char* VERSION = "1.0.0";
+const std::string VERSION = "1.0.0";
 namespace cli {
 
 std::string getHelpMarkdown() {
@@ -13,13 +13,15 @@ termmark [options] <file.md>
 ```
 
 ## Options
+- `--watch`: Live Preview of md file (Updates when saved).
 - `--guide`: Show an example Markdown document with all features.
 - `--version`: Show version information.
 - `--help`: Display this help message.
 
 ## Example
 ```sh
-termmark notes.md
+termmark file.md
+termmark --watch file.md
 termmark --guide
 termmark --help
 ```
@@ -27,7 +29,7 @@ termmark --help
 }
 
 std::string getVersionString() {
-    return "TermMark version 1.0.0";
+    return "TermMark version " + VERSION;
 }
 
 }
