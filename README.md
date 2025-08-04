@@ -4,7 +4,7 @@
 
 ---
 
-## ✨ Features
+### ✨ Features
 
 - **Headings** with proper hierarchy and bold styling
 - **Bold**, _italic_, and `inline code` rendering
@@ -17,9 +17,9 @@
 
 ---
 
-## 🛠️ Getting Started
+### 🛠️ Getting Started
 
-### 🔧 Build Instructions
+#### 🔧 Build Instructions
 
 Make sure you have a C++17+ compatible compiler. Then:
 
@@ -34,14 +34,13 @@ make
 
 ---
 
-## 🧪 Usage
+### 🧪 Usage
 
 You can render Markdown content in the terminal:
 
 ```bash
-./termmark guide      # Renders a built-in markdown guide
-./termmark README.md  # Renders any local .md file
-./termmark --watch <file.md>
+./termmark --guide      # Renders a built-in markdown guide
+./termmark README.md    # Renders any local .md file
 ```
 
 Use the flags:
@@ -54,15 +53,14 @@ Use the flags:
 
 ---
 
-## Sample Output
+### Sample Output
 
 ![Sample Markdown Render Output 1](images/Demo1.png)
-
 ![Sample Markdown Render Output 2](images/Demo2.png)
 
 ---
 
-## 📁 Project Structure
+### 📁 Project Structure
 
 ```bash
 TERMMARK/
@@ -83,13 +81,13 @@ TERMMARK/
 
 ---
 
-## 📦 Dependencies
+### 📦 Dependencies
 
 - **Standard C++ STL only** — No external dependencies!
 
 ---
 
-## 📌 Future Plans
+### 📌 Future Plans
 
 - [ ] Support images as alt-text
 - [ ] Terminal link detection
@@ -98,7 +96,7 @@ TERMMARK/
 
 ---
 
-## 👨‍💻 Author
+### 👨‍💻 Author
 
 Built with ❤️ by [Ishan Awal](https://github.com/Codewire-github)
 
@@ -106,7 +104,7 @@ If you like it, consider ⭐️ starring the repo!
 
 ---
 
-## 🧾 License
+### 🧾 License
 
 This project is licensed under the MIT License.
 See the [LICENSE](./LICENSE) file for details.
