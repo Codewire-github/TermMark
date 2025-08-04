@@ -80,7 +80,7 @@ We'll use very basic styles for this example.
 
 -----
 
-## 5. JavaScript Logic
+## 5. JavaScript Logic Code
 
 Let’s write the core logic of our app. Save this as `script.js`.
 
@@ -134,7 +134,7 @@ Here's a useful link: [GitHub](https://github.com).
 
 -----
 
-## Key Components Summary
+## Key Components Summary Table
 
 | Component | Purpose | File |
 | :--- | :--- | :--- |
