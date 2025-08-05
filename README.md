@@ -23,7 +23,7 @@
 #### 🧪 Install via Homebrew
 
 ```sh
-brew tap codewire-github/tap
+brew tap ishanawal/tap
 brew install termmark
 ```
 
@@ -32,7 +32,7 @@ brew install termmark
 Make sure you have a C++17+ compatible compiler. Then:
 
 ```bash
-git clone https://github.com/your-username/TermMark.git
+git clone https://github.com/ishanawal/TermMark.git
 cd TermMark
 mkdir build && cd build
 cmake ..
@@ -116,7 +116,7 @@ TERMMARK/
 
 ### 👨‍💻 Author
 
-Built with ❤️ by [Ishan Awal](https://github.com/Codewire-github)
+Built with ❤️ by [Ishan Awal](https://github.com/ishanawal)
 
 If you like it, consider ⭐️ starring the repo!
 
