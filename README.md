@@ -20,6 +20,13 @@
 
 ### 🛠️ Getting Started
 
+#### 🧪 Install via Homebrew
+
+```sh
+brew tap codewire-github/tap
+brew install termmark
+```
+
 #### 🔧 Build Instructions
 
 Make sure you have a C++17+ compatible compiler. Then:
